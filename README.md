@@ -84,7 +84,7 @@ GET /api/produtos/categoria/{categoria} - Lista produtos por categoria
 ---
 
 ## 🧪 Testes com Postman / Insomnia
-Na pasta /docs ou /collection deste repositório, você encontra a coleção exportada do Postman contendo as requisições prontas para teste.
+Na pasta /docs/collections deste repositório, você encontra a coleção exportada do Postman contendo as requisições prontas para teste.
 
 ## 📄 Licença
 Este projeto é voltado para fins acadêmicos e de aprendizado.
