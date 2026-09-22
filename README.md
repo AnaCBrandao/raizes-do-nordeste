@@ -26,8 +26,8 @@ Esta é uma aplicação RESTful desenvolvida com **Spring Boot** para o gerencia
 
 1. **Clonar o repositório:**
    ```bash
-   git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
-   cd seu-repositorio
+   git clone https://github.com/AnaCBrandao/raizes-do-nordeste.git
+   cd raizes-do-nordeste
 
 2. **Configurar as Variáveis de Ambiente (opcional):**
 Caso haja configurações no arquivo src/main/resources/application.yml, certifique-se de validar as credenciais do banco de dados.
