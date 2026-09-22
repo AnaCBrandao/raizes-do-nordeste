@@ -70,6 +70,17 @@ POST /api/usuarios - Cadastra um novo usuário
 
 GET /api/usuarios/{id} - Busca usuário por ID
 
+### 📦 Produtos (/api/produtos)
+GET /api/produtos - Lista todos os produtos
+
+POST /api/produtos - Cadastra um novo produto
+
+GET /api/produtos/{id} - Busca produto por ID
+
+DELETE /api/produtos/{id} - Remove um produto por ID
+
+GET /api/produtos/categoria/{categoria} - Lista produtos por categoria
+
 ---
 
 ## 🧪 Testes com Postman / Insomnia
