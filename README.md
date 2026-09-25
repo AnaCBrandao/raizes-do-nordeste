@@ -19,7 +19,7 @@ Esta é uma aplicação RESTful desenvolvida com **Spring Boot** para o gerencia
 ## 🛠️ Como Executar o Projeto
 
 ### Pré-requisitos
-- **Java Development Kit (JDK)** instalado (versão 17 ou superior)
+- **Java Development Kit (JDK)** instalado (versão 21 ou superior)
 - **Apache Maven** instalado (ou utilizar o wrapper `./mvnw`)
 
 ### Passos para Execução

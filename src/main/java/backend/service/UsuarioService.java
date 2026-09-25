@@ -32,9 +32,14 @@ public class UsuarioService {
     }
 
     public UsuarioResponseDTO salvar(UsuarioRequestDTO dto) {
+        if (Boolean.FALSE.equals(dto.getConsentimento())) {
+            throw new IllegalArgumentException("É necessário aceitar os termos de consentimento para se cadastrar.");
+        }
+
         if (usuarioRepository.existsByEmail(dto.getEmail())) {
             throw new IllegalArgumentException("E-mail já cadastrado!");
         }
+
         Usuario usuario = UsuarioMapper.toEntity(dto);
         Usuario salvo = usuarioRepository.save(usuario);
         return UsuarioMapper.toDTO(salvo);

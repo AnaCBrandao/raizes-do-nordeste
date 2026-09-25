@@ -1,9 +1,9 @@
 package backend.enums;
 
 public enum StatusPedido {
-    PENDENTE,
-    PAGO,
-    ENVIADO,
+    AGUARDANDO_PAGAMENTO,
+    EM_PREPARO,
+    PRONTO,
     ENTREGUE,
     CANCELADO
 }

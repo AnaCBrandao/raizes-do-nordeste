@@ -1,7 +1,9 @@
 package backend.dto;
 
+import backend.enums.PerfilEnum;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class UsuarioRequestDTO {
@@ -18,7 +20,21 @@ public class UsuarioRequestDTO {
     @Size(min = 6, message = "A senha deve ter no mínimo 6 caracteres")
     private String senha;
 
+    @NotNull(message = "O perfil é obrigatório")
+    private PerfilEnum perfil;
+
+    @NotNull(message = "O consentimento dos termos/LGPD é obrigatório")
+    private Boolean consentimento;
+
     public UsuarioRequestDTO() {}
+
+    public UsuarioRequestDTO(String nome, String email, String senha, PerfilEnum perfil, Boolean consentimento) {
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.perfil = perfil;
+        this.consentimento = consentimento;
+    }
 
     public String getNome() { return nome; }
     public void setNome(String nome) { this.nome = nome; }
@@ -28,4 +44,10 @@ public class UsuarioRequestDTO {
 
     public String getSenha() { return senha; }
     public void setSenha(String senha) { this.senha = senha; }
+
+    public PerfilEnum getPerfil() { return perfil; }
+    public void setPerfil(PerfilEnum perfil) { this.perfil = perfil; }
+
+    public Boolean getConsentimento() { return consentimento; }
+    public void setConsentimento(Boolean consentimento) { this.consentimento = consentimento; }
 }

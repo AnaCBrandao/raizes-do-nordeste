@@ -32,7 +32,7 @@ public class Pedido {
     protected void onCreate() {
         this.dataPedido = LocalDateTime.now();
         if (this.status == null) {
-            this.status = StatusPedido.PENDENTE;
+            this.status = StatusPedido.AGUARDANDO_PAGAMENTO;
         }
     }
 
