@@ -1,8 +1,8 @@
 package backend.enums;
 
 public enum CategoriaProduto {
-    ARTESANATO,
-    GASTRONOMIA,
+    PRATOS_PRINCIPAIS,
+    BEBIDAS,
     VESTUARIO,
     DECORACAO,
     OUTROS
