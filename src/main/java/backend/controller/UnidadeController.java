@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/unidades")
+@RequestMapping("/api/v3/unidades")
 @Tag(name = "Unidade", description = "Endpoints para gestão de unidades")
 public class UnidadeController {
 

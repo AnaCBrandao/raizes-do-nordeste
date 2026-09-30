@@ -25,22 +25,18 @@ public class Produto {
     @Column(nullable = false)
     private Integer estoque;
 
-    @Column(name = "imagem_url")
-    private String imagemUrl;
-
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private CategoriaProduto categoria;
 
     public Produto() {}
 
-    public Produto(Long id, String nome, String descricao, BigDecimal preco, Integer estoque, String imagemUrl, CategoriaProduto categoria) {
+    public Produto(Long id, String nome, String descricao, BigDecimal preco, Integer estoque, CategoriaProduto categoria) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
         this.estoque = estoque;
-        this.imagemUrl = imagemUrl;
         this.categoria = categoria;
     }
 
@@ -58,9 +54,6 @@ public class Produto {
 
     public Integer getEstoque() { return estoque; }
     public void setEstoque(Integer estoque) { this.estoque = estoque; }
-
-    public String getImagemUrl() { return imagemUrl; }
-    public void setImagemUrl(String imagemUrl) { this.imagemUrl = imagemUrl; }
 
     public CategoriaProduto getCategoria() { return categoria; }
     public void setCategoria(CategoriaProduto categoria) { this.categoria = categoria; }

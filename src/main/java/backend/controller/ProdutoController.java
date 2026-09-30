@@ -13,7 +13,7 @@ import backend.service.ProdutoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/produtos")
+@RequestMapping("/api/v3/produtos")
 @Tag(name = "Produtos", description = "Endpoints para gerenciamento do catálogo de produtos")
 public class ProdutoController {
 
