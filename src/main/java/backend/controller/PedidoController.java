@@ -14,11 +14,13 @@ import backend.model.Usuario;
 import backend.repository.UsuarioRepository;
 import backend.enums.StatusPedido;
 import backend.service.PedidoService;
+import backend.dto.AtualizarStatusPedidoRequestDTO;
+import backend.dto.AtualizarStatusPedidoResponseDTO;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/pedidos")
+@RequestMapping("/api/v3/pedidos")
 @Tag(name = "Pedidos", description = "Endpoints para gerenciamento de pedidos")
 public class PedidoController {
 
@@ -92,5 +94,16 @@ public class PedidoController {
         pedidoService.deletar(id);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/{pedidoId}/status")
+    public ResponseEntity<AtualizarStatusPedidoResponseDTO> atualizarStatus(
+            @PathVariable Long pedidoId,
+            @RequestBody AtualizarStatusPedidoRequestDTO request) {
+
+        AtualizarStatusPedidoResponseDTO response =
+                pedidoService.atualizarStatus(pedidoId, request);
+
+        return ResponseEntity.ok(response);
     }
 }

@@ -50,20 +50,29 @@ public SecurityFilterChain securityFilterChain(
         )
 
         .authorizeHttpRequests(auth ->
-            auth
-                .requestMatchers(
-                    "/swagger-ui/**",
-                    "/v3/api-docs/**",
-                    "/api/v3/auth/**"
-                ).permitAll()
+          auth
+              .requestMatchers(
+                  "/swagger-ui/**",
+                  "/v3/api-docs/**",
+                  "/api/v3/auth/**"
+              ).permitAll()
 
-                .requestMatchers(
-                    HttpMethod.POST,
-                    "/api/usuarios"
-                ).permitAll()
+              .requestMatchers(
+                  HttpMethod.POST,
+                  "/api/usuarios"
+              ).permitAll()
 
-                .anyRequest().authenticated()
-        )
+              .requestMatchers(
+                  HttpMethod.PATCH,
+                  "/api/v3/pedidos/*/status"
+              ).hasAnyRole(
+                  "COZINHA",
+                  "ATENDENTE",
+                  "GERENTE"
+              )
+
+              .anyRequest().authenticated()
+      )
 
         .addFilterBefore(
             jwtFilter,
