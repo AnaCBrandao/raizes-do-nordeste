@@ -15,6 +15,8 @@ import backend.repository.EstoqueRepository;
 import backend.repository.PedidoRepository;
 import backend.repository.ProdutoRepository;
 import backend.repository.UnidadeRepository;
+import backend.dto.PagamentoRequestDTO;
+import backend.dto.PagamentoResponseDTO;
 
 import jakarta.transaction.Transactional;
 
@@ -219,4 +221,73 @@ public class PedidoService {
     public void deletar(Long id) {
         pedidoRepository.deleteById(id);
     }
+
+    @Transactional
+public PagamentoResponseDTO processarPagamento(
+        Long pedidoId,
+        PagamentoRequestDTO request) {
+
+    Pedido pedido = pedidoRepository.findById(pedidoId)
+            .orElseThrow(() -> new ResponseStatusException(
+                    HttpStatus.NOT_FOUND,
+                    "Pedido não encontrado"
+            ));
+
+    if (pedido.getStatus() != StatusPedido.AGUARDANDO_PAGAMENTO) {
+        throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "O pedido não está aguardando pagamento"
+        );
+    }
+
+    if (request.getFormaPagamento() == null ||
+            request.getFormaPagamento().isBlank()) {
+
+        throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "Forma de pagamento não informada"
+        );
+    }
+
+    if (request.getValor() == null ||
+            request.getValor().compareTo(BigDecimal.ZERO) <= 0) {
+
+        throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                "O valor do pagamento deve ser maior que zero"
+        );
+    }
+
+    boolean aprovado =
+            request.getValor().compareTo(pedido.getValorTotal()) == 0;
+
+    String transacaoId = "PAG-MOCK-" +
+            java.util.UUID.randomUUID()
+                    .toString()
+                    .substring(0, 6)
+                    .toUpperCase();
+
+    String statusPagamento;
+    String statusPedido;
+
+    if (aprovado) {
+        statusPagamento = "APROVADO";
+        pedido.setStatus(StatusPedido.EM_PREPARO);
+        statusPedido = StatusPedido.EM_PREPARO.name();
+    } else {
+        statusPagamento = "RECUSADO";
+        pedido.setStatus(StatusPedido.CANCELADO);
+        statusPedido = StatusPedido.CANCELADO.name();
+    }
+
+    pedidoRepository.save(pedido);
+
+    return new PagamentoResponseDTO(
+            transacaoId,
+            pedido.getId(),
+            statusPagamento,
+            statusPedido,
+            java.time.LocalDateTime.now()
+    );
+}
 }
