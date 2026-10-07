@@ -225,17 +225,11 @@ raizes-do-nordeste/
 └── src/
     └── main/
         ├── java/
-        │   └── backend/            -> Controllers, entidades, enums, repositorys, etc.
-        │       ├── config/
-        │       ├── controller/
-        │       ├── dto/
-        │       ├── enums/
-        │       ├── exception/
-        │       ├── mapper/
-        │       ├── model/
-        │       ├── repository/
-        │       ├── security/
-        │       └── service/
+        │   └── backend/            
+        │       ├── api/            -> Controllers/mappers
+        │       ├── application/    -> Dtos/services
+        │       ├── domain/         -> Enums/Entidades/Exceções
+        │       ├── infrastructure/ -> Repository/Segurança/Configurações
         │
         └── resources/
             └── application.yml      -> Configurações do Postgres
