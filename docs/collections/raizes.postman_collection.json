@@ -1,1183 +1,903 @@
 {
   "info": {
-    "_postman_id": "309e8f26-290f-4265-9f65-6f60d8cd5259",
-    "name": "OpenAPI definition",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "21228860"
+    "_postman_id": "7c2b4d2e-7e6d-4b5d-9e7f-raizes-nordeste",
+    "name": "Raízes do Nordeste - Testes Obrigatórios",
+    "description": "Coleção de testes automatizados para os requisitos de autenticação/autorização, validação, fluxo de pedidos, pagamento mock e atualização de status. Antes de executar, suba a API e o PostgreSQL e, para uma execução limpa, execute o data.sql manualmente no banco.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
-  "item": [
-    {
-      "name": "api",
-      "item": [
-        {
-          "name": "usuarios",
-          "item": [
-            {
-              "name": "{id}",
-              "item": [
-                {
-                  "name": "buscar Por Id",
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/usuarios/:id",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "usuarios",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id",
-                          "value": "2696"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/usuarios/:id",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "usuarios",
-                            ":id"
-                          ],
-                          "variable": [
-                            {
-                              "key": "id",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [
-                        {
-                          "key": "Content-Type",
-                          "value": "*/*"
-                        }
-                      ],
-                      "cookie": [],
-                      "body": "{\n  \"id\": 8082,\n  \"nome\": \"string\",\n  \"email\": \"string\",\n  \"dataCriacao\": \"1962-08-02T09:52:37.607Z\"\n}"
-                    }
-                  ]
-                },
-                {
-                  "name": "deletar",
-                  "request": {
-                    "method": "DELETE",
-                    "header": [],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/usuarios/:id",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "usuarios",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id",
-                          "value": "2696"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/usuarios/:id",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "usuarios",
-                            ":id"
-                          ],
-                          "variable": [
-                            {
-                              "key": "id",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [],
-                      "cookie": [],
-                      "body": ""
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "listar Todos",
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/usuarios",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "usuarios"
-                  ]
-                }
-              },
-              "response": [
-                {
-                  "name": "OK",
-                  "originalRequest": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/usuarios",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "usuarios"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "body": "[\n  {\n    \"id\": 4947,\n    \"nome\": \"string\",\n    \"email\": \"string\",\n    \"dataCriacao\": \"1949-03-28T20:18:56.039Z\"\n  },\n  {\n    \"id\": 847,\n    \"nome\": \"string\",\n    \"email\": \"string\",\n    \"dataCriacao\": \"1977-08-29T09:43:28.319Z\"\n  }\n]"
-                }
-              ]
-            },
-            {
-              "name": "criar",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"email\": \"string\",\n  \"nome\": \"string\",\n  \"senha\": \"string\"\n}",
-                  "options": {
-                    "raw": {
-                      "headerFamily": "json",
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{baseUrl}}/api/usuarios",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "usuarios"
-                  ]
-                }
-              },
-              "response": [
-                {
-                  "name": "OK",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      },
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n  \"email\": \"string\",\n  \"nome\": \"string\",\n  \"senha\": \"string\"\n}",
-                      "options": {
-                        "raw": {
-                          "headerFamily": "json",
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseUrl}}/api/usuarios",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "usuarios"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "body": "{\n  \"id\": 8082,\n  \"nome\": \"string\",\n  \"email\": \"string\",\n  \"dataCriacao\": \"1962-08-02T09:52:37.607Z\"\n}"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "produtos",
-          "item": [
-            {
-              "name": "{id}",
-              "item": [
-                {
-                  "name": "buscar Por Id 1",
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/produtos/:id",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "produtos",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id",
-                          "value": "2696"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/produtos/:id",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "produtos",
-                            ":id"
-                          ],
-                          "variable": [
-                            {
-                              "key": "id",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [
-                        {
-                          "key": "Content-Type",
-                          "value": "*/*"
-                        }
-                      ],
-                      "cookie": [],
-                      "body": "{\n  \"id\": 4237,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"preco\": 849.5458042089199,\n  \"estoque\": 6979,\n  \"imagemUrl\": \"string\",\n  \"categoria\": \"GASTRONOMIA\"\n}"
-                    }
-                  ]
-                },
-                {
-                  "name": "deletar 1",
-                  "request": {
-                    "method": "DELETE",
-                    "header": [],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/produtos/:id",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "produtos",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id",
-                          "value": "2696"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/produtos/:id",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "produtos",
-                            ":id"
-                          ],
-                          "variable": [
-                            {
-                              "key": "id",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [],
-                      "cookie": [],
-                      "body": ""
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "categoria",
-              "item": [
-                {
-                  "name": "{categoria}",
-                  "item": [
-                    {
-                      "name": "buscar Por Categoria",
-                      "request": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/produtos/categoria/:categoria",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "produtos",
-                            "categoria",
-                            ":categoria"
-                          ],
-                          "variable": [
-                            {
-                              "key": "categoria",
-                              "value": "VESTUARIO"
-                            }
-                          ]
-                        }
-                      },
-                      "response": [
-                        {
-                          "name": "OK",
-                          "originalRequest": {
-                            "method": "GET",
-                            "header": [
-                              {
-                                "key": "Accept",
-                                "value": "*/*"
-                              }
-                            ],
-                            "url": {
-                              "raw": "{{baseUrl}}/api/produtos/categoria/:categoria",
-                              "host": [
-                                "{{baseUrl}}"
-                              ],
-                              "path": [
-                                "api",
-                                "produtos",
-                                "categoria",
-                                ":categoria"
-                              ],
-                              "variable": [
-                                {
-                                  "key": "categoria",
-                                  "value": "VESTUARIO"
-                                }
-                              ]
-                            }
-                          },
-                          "status": "OK",
-                          "code": 200,
-                          "_postman_previewlanguage": "text",
-                          "header": [
-                            {
-                              "key": "Content-Type",
-                              "value": "*/*"
-                            }
-                          ],
-                          "cookie": [],
-                          "body": "[\n  {\n    \"id\": 6133,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"preco\": 1405.8308502859752,\n    \"estoque\": 1297,\n    \"imagemUrl\": \"string\",\n    \"categoria\": \"VESTUARIO\"\n  },\n  {\n    \"id\": 4130,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"preco\": 2766.971202849998,\n    \"estoque\": 8544,\n    \"imagemUrl\": \"string\",\n    \"categoria\": \"ARTESANATO\"\n  }\n]"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "buscar",
-              "item": [
-                {
-                  "name": "buscar Por Nome",
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/produtos/buscar?nome=string",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "produtos",
-                        "buscar"
-                      ],
-                      "query": [
-                        {
-                          "key": "nome",
-                          "value": "string"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/produtos/buscar?nome=string",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "produtos",
-                            "buscar"
-                          ],
-                          "query": [
-                            {
-                              "key": "nome",
-                              "value": "string"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [
-                        {
-                          "key": "Content-Type",
-                          "value": "*/*"
-                        }
-                      ],
-                      "cookie": [],
-                      "body": "[\n  {\n    \"id\": 6133,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"preco\": 1405.8308502859752,\n    \"estoque\": 1297,\n    \"imagemUrl\": \"string\",\n    \"categoria\": \"VESTUARIO\"\n  },\n  {\n    \"id\": 4130,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"preco\": 2766.971202849998,\n    \"estoque\": 8544,\n    \"imagemUrl\": \"string\",\n    \"categoria\": \"ARTESANATO\"\n  }\n]"
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "listar Todos 1",
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/produtos",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "produtos"
-                  ]
-                }
-              },
-              "response": [
-                {
-                  "name": "OK",
-                  "originalRequest": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/produtos",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "produtos"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "body": "[\n  {\n    \"id\": 6133,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"preco\": 1405.8308502859752,\n    \"estoque\": 1297,\n    \"imagemUrl\": \"string\",\n    \"categoria\": \"VESTUARIO\"\n  },\n  {\n    \"id\": 4130,\n    \"nome\": \"string\",\n    \"descricao\": \"string\",\n    \"preco\": 2766.971202849998,\n    \"estoque\": 8544,\n    \"imagemUrl\": \"string\",\n    \"categoria\": \"ARTESANATO\"\n  }\n]"
-                }
-              ]
-            },
-            {
-              "name": "criar 1",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": 4237,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"preco\": 849.5458042089199,\n  \"estoque\": 6979,\n  \"imagemUrl\": \"string\",\n  \"categoria\": \"GASTRONOMIA\"\n}",
-                  "options": {
-                    "raw": {
-                      "headerFamily": "json",
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{baseUrl}}/api/produtos",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "produtos"
-                  ]
-                }
-              },
-              "response": [
-                {
-                  "name": "OK",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      },
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n  \"id\": 4237,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"preco\": 849.5458042089199,\n  \"estoque\": 6979,\n  \"imagemUrl\": \"string\",\n  \"categoria\": \"GASTRONOMIA\"\n}",
-                      "options": {
-                        "raw": {
-                          "headerFamily": "json",
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseUrl}}/api/produtos",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "produtos"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "body": "{\n  \"id\": 4237,\n  \"nome\": \"string\",\n  \"descricao\": \"string\",\n  \"preco\": 849.5458042089199,\n  \"estoque\": 6979,\n  \"imagemUrl\": \"string\",\n  \"categoria\": \"GASTRONOMIA\"\n}"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "name": "pedidos",
-          "item": [
-            {
-              "name": "{id}",
-              "item": [
-                {
-                  "name": "buscar Por Id 2",
-                  "request": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/pedidos/:id",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "pedidos",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id",
-                          "value": "2696"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/pedidos/:id",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "pedidos",
-                            ":id"
-                          ],
-                          "variable": [
-                            {
-                              "key": "id",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [
-                        {
-                          "key": "Content-Type",
-                          "value": "*/*"
-                        }
-                      ],
-                      "cookie": [],
-                      "body": "{\n  \"id\": 3033,\n  \"usuario\": {\n    \"id\": 9029,\n    \"nome\": \"string\",\n    \"email\": \"string\",\n    \"senha\": \"string\",\n    \"dataCriacao\": \"1997-04-17T20:06:33.677Z\"\n  },\n  \"dataPedido\": \"2021-04-20T18:51:41.168Z\",\n  \"status\": \"CANCELADO\",\n  \"valorTotal\": 9370.300102491849\n}"
-                    }
-                  ]
-                },
-                {
-                  "name": "deletar 2",
-                  "request": {
-                    "method": "DELETE",
-                    "header": [],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/pedidos/:id",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "pedidos",
-                        ":id"
-                      ],
-                      "variable": [
-                        {
-                          "key": "id",
-                          "value": "2696"
-                        }
-                      ]
-                    }
-                  },
-                  "response": [
-                    {
-                      "name": "OK",
-                      "originalRequest": {
-                        "method": "DELETE",
-                        "header": [],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/pedidos/:id",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "pedidos",
-                            ":id"
-                          ],
-                          "variable": [
-                            {
-                              "key": "id",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "status": "OK",
-                      "code": 200,
-                      "_postman_previewlanguage": "text",
-                      "header": [],
-                      "cookie": [],
-                      "body": ""
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "usuario",
-              "item": [
-                {
-                  "name": "{usuarioId}",
-                  "item": [
-                    {
-                      "name": "buscar Por Usuario",
-                      "request": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/pedidos/usuario/:usuarioId",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "pedidos",
-                            "usuario",
-                            ":usuarioId"
-                          ],
-                          "variable": [
-                            {
-                              "key": "usuarioId",
-                              "value": "2696"
-                            }
-                          ]
-                        }
-                      },
-                      "response": [
-                        {
-                          "name": "OK",
-                          "originalRequest": {
-                            "method": "GET",
-                            "header": [
-                              {
-                                "key": "Accept",
-                                "value": "*/*"
-                              }
-                            ],
-                            "url": {
-                              "raw": "{{baseUrl}}/api/pedidos/usuario/:usuarioId",
-                              "host": [
-                                "{{baseUrl}}"
-                              ],
-                              "path": [
-                                "api",
-                                "pedidos",
-                                "usuario",
-                                ":usuarioId"
-                              ],
-                              "variable": [
-                                {
-                                  "key": "usuarioId",
-                                  "value": "2696"
-                                }
-                              ]
-                            }
-                          },
-                          "status": "OK",
-                          "code": 200,
-                          "_postman_previewlanguage": "text",
-                          "header": [
-                            {
-                              "key": "Content-Type",
-                              "value": "*/*"
-                            }
-                          ],
-                          "cookie": [],
-                          "body": "[\n  {\n    \"id\": 7712,\n    \"usuario\": {\n      \"id\": 107,\n      \"nome\": \"string\",\n      \"email\": \"string\",\n      \"senha\": \"string\",\n      \"dataCriacao\": \"2014-12-13T20:24:20.059Z\"\n    },\n    \"dataPedido\": \"1986-08-29T07:36:40.014Z\",\n    \"status\": \"CANCELADO\",\n    \"valorTotal\": 4255.62458196341\n  },\n  {\n    \"id\": 4613,\n    \"usuario\": {\n      \"id\": 3448,\n      \"nome\": \"string\",\n      \"email\": \"string\",\n      \"senha\": \"string\",\n      \"dataCriacao\": \"1955-09-28T09:28:27.541Z\"\n    },\n    \"dataPedido\": \"1965-05-25T03:08:20.674Z\",\n    \"status\": \"CANCELADO\",\n    \"valorTotal\": 4026.2906147995536\n  }\n]"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "status",
-              "item": [
-                {
-                  "name": "{status}",
-                  "item": [
-                    {
-                      "name": "buscar Por Status",
-                      "request": {
-                        "method": "GET",
-                        "header": [
-                          {
-                            "key": "Accept",
-                            "value": "*/*"
-                          }
-                        ],
-                        "url": {
-                          "raw": "{{baseUrl}}/api/pedidos/status/:status",
-                          "host": [
-                            "{{baseUrl}}"
-                          ],
-                          "path": [
-                            "api",
-                            "pedidos",
-                            "status",
-                            ":status"
-                          ],
-                          "variable": [
-                            {
-                              "key": "status",
-                              "value": "PENDENTE"
-                            }
-                          ]
-                        }
-                      },
-                      "response": [
-                        {
-                          "name": "OK",
-                          "originalRequest": {
-                            "method": "GET",
-                            "header": [
-                              {
-                                "key": "Accept",
-                                "value": "*/*"
-                              }
-                            ],
-                            "url": {
-                              "raw": "{{baseUrl}}/api/pedidos/status/:status",
-                              "host": [
-                                "{{baseUrl}}"
-                              ],
-                              "path": [
-                                "api",
-                                "pedidos",
-                                "status",
-                                ":status"
-                              ],
-                              "variable": [
-                                {
-                                  "key": "status",
-                                  "value": "PENDENTE"
-                                }
-                              ]
-                            }
-                          },
-                          "status": "OK",
-                          "code": 200,
-                          "_postman_previewlanguage": "text",
-                          "header": [
-                            {
-                              "key": "Content-Type",
-                              "value": "*/*"
-                            }
-                          ],
-                          "cookie": [],
-                          "body": "[\n  {\n    \"id\": 7712,\n    \"usuario\": {\n      \"id\": 107,\n      \"nome\": \"string\",\n      \"email\": \"string\",\n      \"senha\": \"string\",\n      \"dataCriacao\": \"2014-12-13T20:24:20.059Z\"\n    },\n    \"dataPedido\": \"1986-08-29T07:36:40.014Z\",\n    \"status\": \"CANCELADO\",\n    \"valorTotal\": 4255.62458196341\n  },\n  {\n    \"id\": 4613,\n    \"usuario\": {\n      \"id\": 3448,\n      \"nome\": \"string\",\n      \"email\": \"string\",\n      \"senha\": \"string\",\n      \"dataCriacao\": \"1955-09-28T09:28:27.541Z\"\n    },\n    \"dataPedido\": \"1965-05-25T03:08:20.674Z\",\n    \"status\": \"CANCELADO\",\n    \"valorTotal\": 4026.2906147995536\n  }\n]"
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "name": "listar Todos 2",
-              "request": {
-                "method": "GET",
-                "header": [
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "url": {
-                  "raw": "{{baseUrl}}/api/pedidos",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "pedidos"
-                  ]
-                }
-              },
-              "response": [
-                {
-                  "name": "OK",
-                  "originalRequest": {
-                    "method": "GET",
-                    "header": [
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "url": {
-                      "raw": "{{baseUrl}}/api/pedidos",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "pedidos"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "body": "[\n  {\n    \"id\": 7712,\n    \"usuario\": {\n      \"id\": 107,\n      \"nome\": \"string\",\n      \"email\": \"string\",\n      \"senha\": \"string\",\n      \"dataCriacao\": \"2014-12-13T20:24:20.059Z\"\n    },\n    \"dataPedido\": \"1986-08-29T07:36:40.014Z\",\n    \"status\": \"CANCELADO\",\n    \"valorTotal\": 4255.62458196341\n  },\n  {\n    \"id\": 4613,\n    \"usuario\": {\n      \"id\": 3448,\n      \"nome\": \"string\",\n      \"email\": \"string\",\n      \"senha\": \"string\",\n      \"dataCriacao\": \"1955-09-28T09:28:27.541Z\"\n    },\n    \"dataPedido\": \"1965-05-25T03:08:20.674Z\",\n    \"status\": \"CANCELADO\",\n    \"valorTotal\": 4026.2906147995536\n  }\n]"
-                }
-              ]
-            },
-            {
-              "name": "criar 2",
-              "request": {
-                "method": "POST",
-                "header": [
-                  {
-                    "key": "Content-Type",
-                    "value": "application/json"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "*/*"
-                  }
-                ],
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"id\": 3033,\n  \"usuario\": {\n    \"id\": 9029,\n    \"nome\": \"string\",\n    \"email\": \"string\",\n    \"senha\": \"string\",\n    \"dataCriacao\": \"1997-04-17T20:06:33.677Z\"\n  },\n  \"dataPedido\": \"2021-04-20T18:51:41.168Z\",\n  \"status\": \"CANCELADO\",\n  \"valorTotal\": 9370.300102491849\n}",
-                  "options": {
-                    "raw": {
-                      "headerFamily": "json",
-                      "language": "json"
-                    }
-                  }
-                },
-                "url": {
-                  "raw": "{{baseUrl}}/api/pedidos",
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "path": [
-                    "api",
-                    "pedidos"
-                  ]
-                }
-              },
-              "response": [
-                {
-                  "name": "OK",
-                  "originalRequest": {
-                    "method": "POST",
-                    "header": [
-                      {
-                        "key": "Content-Type",
-                        "value": "application/json"
-                      },
-                      {
-                        "key": "Accept",
-                        "value": "*/*"
-                      }
-                    ],
-                    "body": {
-                      "mode": "raw",
-                      "raw": "{\n  \"id\": 3033,\n  \"usuario\": {\n    \"id\": 9029,\n    \"nome\": \"string\",\n    \"email\": \"string\",\n    \"senha\": \"string\",\n    \"dataCriacao\": \"1997-04-17T20:06:33.677Z\"\n  },\n  \"dataPedido\": \"2021-04-20T18:51:41.168Z\",\n  \"status\": \"CANCELADO\",\n  \"valorTotal\": 9370.300102491849\n}",
-                      "options": {
-                        "raw": {
-                          "headerFamily": "json",
-                          "language": "json"
-                        }
-                      }
-                    },
-                    "url": {
-                      "raw": "{{baseUrl}}/api/pedidos",
-                      "host": [
-                        "{{baseUrl}}"
-                      ],
-                      "path": [
-                        "api",
-                        "pedidos"
-                      ]
-                    }
-                  },
-                  "status": "OK",
-                  "code": 200,
-                  "_postman_previewlanguage": "text",
-                  "header": [
-                    {
-                      "key": "Content-Type",
-                      "value": "*/*"
-                    }
-                  ],
-                  "cookie": [],
-                  "body": "{\n  \"id\": 3033,\n  \"usuario\": {\n    \"id\": 9029,\n    \"nome\": \"string\",\n    \"email\": \"string\",\n    \"senha\": \"string\",\n    \"dataCriacao\": \"1997-04-17T20:06:33.677Z\"\n  },\n  \"dataPedido\": \"2021-04-20T18:51:41.168Z\",\n  \"status\": \"CANCELADO\",\n  \"valorTotal\": 9370.300102491849\n}"
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
   "variable": [
     {
       "key": "baseUrl",
       "value": "http://localhost:8080"
+    },
+    {
+      "key": "clienteEmail",
+      "value": "cliente.teste@raizes.com"
+    },
+    {
+      "key": "clienteSenha",
+      "value": "123456"
+    },
+    {
+      "key": "cozinhaEmail",
+      "value": "cozinha.teste@raizes.com"
+    },
+    {
+      "key": "cozinhaSenha",
+      "value": "123456"
+    },
+    {
+      "key": "tokenCliente",
+      "value": ""
+    },
+    {
+      "key": "tokenCozinha",
+      "value": ""
+    },
+    {
+      "key": "pedidoCriadoId",
+      "value": ""
+    },
+    {
+      "key": "pedidoRecusaId",
+      "value": ""
+    },
+    {
+      "key": "produtoTesteId",
+      "value": "4"
+    },
+    {
+      "key": "unidadeTesteId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - Autenticação e autorização",
+      "item": [
+        {
+          "name": "1a - Login CLIENTE (token válido)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{clienteEmail}}\",\n  \"senha\": \"{{clienteSenha}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v3/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Token JWT presente', function () { pm.expect(json.token).to.be.a('string').and.not.empty; });",
+                  "pm.collectionVariables.set('tokenCliente', json.token);",
+                  "pm.test('Tipo do token é Bearer', function () { pm.expect(json.tipoToken).to.eql('Bearer'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "1a - Login COZINHA (token válido)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{cozinhaEmail}}\",\n  \"senha\": \"{{cozinhaSenha}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v3/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Token JWT presente', function () { pm.expect(json.token).to.be.a('string').and.not.empty; });",
+                  "pm.collectionVariables.set('tokenCozinha', json.token);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "1b - Acesso sem token (401)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 401 Unauthorized', function () { pm.response.to.have.status(401); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "1c - CLIENTE sem permissão para alterar status (403)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"novoStatus\": \"PRONTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v3/pedidos/{{pedidoCriadoId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "pedidos",
+                "{{pedidoCriadoId}}",
+                "status"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 403 Forbidden', function () { pm.response.to.have.status(403); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2 - Validação de dados",
+      "item": [
+        {
+          "name": "2a - Campo obrigatório ausente (itens)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": {{unidadeTesteId}},\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 400', function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "2b - Quantidade negativa (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": {{unidadeTesteId}},\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\",\n  \"itens\": [\n    {\n      \"produtoId\": {{produtoTesteId}},\n      \"quantidade\": -1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 400', function () { pm.response.to.have.status(400); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3 - Regras de negócio do pedido",
+      "item": [
+        {
+          "name": "3a - Pedido com item válido (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": {{unidadeTesteId}},\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\",\n  \"itens\": [\n    {\n      \"produtoId\": {{produtoTesteId}},\n      \"quantidade\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201 Created', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Pedido possui ID', function () { pm.expect(json.id).to.exist; });",
+                  "pm.test('Pedido inicia aguardando pagamento', function () { pm.expect(json.status).to.eql('AGUARDANDO_PAGAMENTO'); });",
+                  "pm.collectionVariables.set('pedidoCriadoId', json.id);",
+                  "pm.collectionVariables.set('pedidoCriadoValor', json.valorTotal);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "3b - Unidade inexistente (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": 999999,\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\",\n  \"itens\": [\n    {\n      \"produtoId\": {{produtoTesteId}},\n      \"quantidade\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 404 Not Found', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Mensagem indica unidade não encontrada', function () { pm.expect(pm.response.text()).to.include('Unidade não encontrada'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "3b - Produto inexistente (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": {{unidadeTesteId}},\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\",\n  \"itens\": [\n    {\n      \"produtoId\": 999999,\n      \"quantidade\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 404 Not Found', function () { pm.response.to.have.status(404); });",
+                  "pm.test('Mensagem indica produto não encontrado', function () { pm.expect(pm.response.text()).to.include('Produto não encontrado'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "3c - Estoque insuficiente (400 conforme regra atual)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": {{unidadeTesteId}},\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\",\n  \"itens\": [\n    {\n      \"produtoId\": {{produtoTesteId}},\n      \"quantidade\": 999999\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 400 Bad Request', function () { pm.response.to.have.status(400); });",
+                  "pm.test('Mensagem indica estoque insuficiente', function () { pm.expect(pm.response.text()).to.include('Estoque insuficiente'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4 - Pagamento mock e atualização de status",
+      "item": [
+        {
+          "name": "4a - Pagamento mock aprovado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formaPagamento\": \"PIX\",\n  \"valor\": {{pedidoCriadoValor}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v3/pedidos/{{pedidoCriadoId}}/pagamentos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "pedidos",
+                "{{pedidoCriadoId}}",
+                "pagamentos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Pagamento aprovado', function () { pm.expect(json.statusPagamento).to.eql('APROVADO'); });",
+                  "pm.test('Pedido atualizado para EM_PREPARO', function () { pm.expect(json.statusPedidoAtualizado).to.eql('EM_PREPARO'); });",
+                  "pm.test('Transação mock gerada', function () { pm.expect(json.transacaoId).to.match(/^PAG-MOCK-/); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4a - Confirmar status após pagamento aprovado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos/{{pedidoCriadoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedidoCriadoId}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Status do pedido é EM_PREPARO', function () { pm.expect(json.status).to.eql('EM_PREPARO'); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4b - Criar pedido para pagamento recusado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"unidadeId\": {{unidadeTesteId}},\n  \"canalPedido\": \"TOTEM\",\n  \"formaPagamento\": \"PIX\",\n  \"itens\": [\n    {\n      \"produtoId\": {{produtoTesteId}},\n      \"quantidade\": 1\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 201 Created', function () { pm.response.to.have.status(201); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Novo pedido aguarda pagamento', function () { pm.expect(json.status).to.eql('AGUARDANDO_PAGAMENTO'); });",
+                  "pm.collectionVariables.set('pedidoRecusaId', json.id);",
+                  "pm.collectionVariables.set('pedidoRecusaValor', json.valorTotal);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4b - Pagamento mock recusado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"formaPagamento\": \"PIX\",\n  \"valor\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v3/pedidos/{{pedidoRecusaId}}/pagamentos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "pedidos",
+                "{{pedidoRecusaId}}",
+                "pagamentos"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Pagamento recusado', function () { pm.expect(json.statusPagamento).to.eql('RECUSADO'); });",
+                  "pm.test('Pedido atualizado para CANCELADO', function () { pm.expect(json.statusPedidoAtualizado).to.eql('CANCELADO'); });",
+                  "pm.test('Mensagem/status coerente', function () { pm.expect(json.pedidoId).to.eql(Number(pm.collectionVariables.get('pedidoRecusaId'))); });"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "4b - Confirmar status após pagamento recusado",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCliente}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/pedidos/{{pedidoRecusaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "pedidos",
+                "{{pedidoRecusaId}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Status do pedido é CANCELADO', function () { pm.expect(json.status).to.eql('CANCELADO'); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5 - Atualização de status e auditoria",
+      "item": [
+        {
+          "name": "Atualização autorizada por COZINHA",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{tokenCozinha}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"novoStatus\": \"PRONTO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/v3/pedidos/{{pedidoCriadoId}}/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "v3",
+                "pedidos",
+                "{{pedidoCriadoId}}",
+                "status"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status 200', function () { pm.response.to.have.status(200); });",
+                  "const json = pm.response.json();",
+                  "pm.test('Status anterior é EM_PREPARO', function () { pm.expect(json.statusAnterior).to.eql('EM_PREPARO'); });",
+                  "pm.test('Novo status é PRONTO', function () { pm.expect(json.novoStatus).to.eql('PRONTO'); });",
+                  "pm.test('Pedido correto foi atualizado', function () { pm.expect(json.pedidoId).to.eql(Number(pm.collectionVariables.get('pedidoCriadoId'))); });"
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
