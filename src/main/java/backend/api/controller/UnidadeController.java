@@ -13,19 +13,18 @@ import java.util.List;
 @RequestMapping("/api/v3/unidades")
 @Tag(name = "Unidade", description = "Endpoints para gestão de unidades")
 public class UnidadeController {
+  private final UnidadeService unidadeService;
 
-    private final UnidadeService unidadeService;
+  public UnidadeController(UnidadeService unidadeService) {
+    this.unidadeService = unidadeService;
+  }
 
-    public UnidadeController(UnidadeService unidadeService) {
-        this.unidadeService = unidadeService;
-    }
+  @GetMapping("/{unidadeId}/produtos")
+  public ResponseEntity<List<ProdutoUnidadeResponseDTO>> listarProdutosPorUnidade(
+    @PathVariable Long unidadeId,
+    @RequestParam(required = false) String categoria) {
 
-    @GetMapping("/{unidadeId}/produtos")
-    public ResponseEntity<List<ProdutoUnidadeResponseDTO>> listarProdutosPorUnidade(
-            @PathVariable Long unidadeId,
-            @RequestParam(required = false) String categoria) {
-
-        List<ProdutoUnidadeResponseDTO> produtos = unidadeService.buscarProdutosPorUnidade(unidadeId, categoria);
-        return ResponseEntity.ok(produtos);
-    }
+    List<ProdutoUnidadeResponseDTO> produtos = unidadeService.buscarProdutosPorUnidade(unidadeId, categoria);
+    return ResponseEntity.ok(produtos);
+  }
 }

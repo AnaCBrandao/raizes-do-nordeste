@@ -12,27 +12,26 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenApiConfig {
 
-    @Bean
-    public OpenAPI customOpenAPI() {
-        return new OpenAPI()
-                .info(new Info()
-                        .title("API Raízes do nordeste")
-                        .version("1.0.0")
-                        .description("API RESTful para gerenciamento de pedidos e usuários do sistema.")
-                        .license(new License()
-                                .name("Apache 2.0")
-                                .url("https://www.apache.org/licenses/LICENSE-2.0")))
+  @Bean
+  public OpenAPI customOpenAPI() {
+    return new OpenAPI()
+      .info(new Info()
+        .title("API Raízes do nordeste")
+        .version("1.0.0")
+        .description("API RESTful para gerenciamento de pedidos e usuários do sistema.")
+        .license(new License()
+          .name("Apache 2.0")
+          .url("https://www.apache.org/licenses/LICENSE-2.0")))        
+      .components(new Components()
+          .addSecuritySchemes("bearerAuth",
+            new SecurityScheme()
+              .type(SecurityScheme.Type.HTTP)
+                .scheme("bearer")
+                .bearerFormat("JWT")))
                 
-                .components(new Components()
-                        .addSecuritySchemes("bearerAuth",
-                                new SecurityScheme()
-                                        .type(SecurityScheme.Type.HTTP)
-                                        .scheme("bearer")
-                                        .bearerFormat("JWT")))
-                
-                .addSecurityItem(
-                        new SecurityRequirement()
-                                .addList("bearerAuth")
-                );
-    }
+      .addSecurityItem(
+        new SecurityRequirement()
+          .addList("bearerAuth")
+      );
+  }
 }

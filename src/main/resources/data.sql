@@ -15,25 +15,12 @@
 --   estoques
 --   tb_pedidos
 --   itens_pedido
---
--- O script também deixa pronto o relacionamento:
---   Produto <-> Estoque <-> Unidade
---
--- Pode ser executado manualmente no pgAdmin.
 -- ============================================================
 
 BEGIN;
 
--- ============================================================
--- 1. RESET DOS DADOS
--- ============================================================
 -- ATENÇÃO: isto apaga os registros atuais dessas tabelas.
 -- As tabelas/estruturas não são apagadas.
---
--- CASCADE garante que os relacionamentos entre as tabelas
--- não impeçam a limpeza.
---
--- RESTART IDENTITY reinicia os IDs para 1.
 
 TRUNCATE TABLE
     itens_pedido,
@@ -44,23 +31,7 @@ TRUNCATE TABLE
     tb_usuarios
 RESTART IDENTITY CASCADE;
 
-
--- ============================================================
--- 2. EXTENSÃO PARA GERAR HASHES COMPATÍVEIS COM BCRYPT
--- ============================================================
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
-
-
--- ============================================================
--- 3. USUÁRIOS
--- ============================================================
--- Todos usam a senha:
--- 123456
---
--- Os três primeiros perfis permitem testar o PATCH de status:
--- COZINHA, ATENDENTE e GERENTE.
---
--- O CLIENTE permite testar o acesso negado (403).
 
 INSERT INTO tb_usuarios
     (nome, email, senha, perfil, consentimento, data_criacao)
@@ -98,10 +69,6 @@ VALUES
         CURRENT_TIMESTAMP
     );
 
-
--- ============================================================
--- 4. UNIDADES
--- ============================================================
 -- Unidade 1 e 2: ativas.
 -- Unidade 3: inativa, para testar a validação do pedido.
 
@@ -123,11 +90,6 @@ VALUES
         'Rua do Mercado, 20',
         false
     );
-
-
--- ============================================================
--- 5. PRODUTOS
--- ============================================================
 
 INSERT INTO tb_produtos
     (nome, descricao, preco, estoque, categoria)
@@ -175,63 +137,20 @@ VALUES
         'DECORACAO'
     );
 
-
--- ============================================================
--- 6. ESTOQUE POR UNIDADE
--- ============================================================
--- Este é o relacionamento que já foi utilizado no projeto:
---
---   estoques.produto_id -> tb_produtos.id
---   estoques.unidade_id -> unidades.id
---
--- Cada registro representa a quantidade de um produto
--- disponível em uma determinada unidade.
---
--- Os valores abaixo já consideram os pedidos de teste
--- cadastrados posteriormente.
-
 INSERT INTO estoques
     (quantidade, produto_id, unidade_id)
 VALUES
-    -- Unidade Centro
-    (16, 1, 1), -- Baião de Dois
-    (14, 2, 1), -- Carne de Sol
-    (15, 3, 1), -- Cuscuz
-    (20, 4, 1), -- Suco de Cajá
-    (5, 5, 1),  -- Camiseta
+    (16, 1, 1), 
+    (14, 2, 1), 
+    (15, 3, 1), 
+    (20, 4, 1), 
+    (5, 5, 1),  
 
-    -- Unidade Beira-Mar
-    (7, 1, 2),  -- Baião de Dois
-    (7, 2, 2),  -- Carne de Sol
-    (8, 3, 2),  -- Cuscuz
-    (15, 4, 2), -- Suco de Cajá
-    (5, 6, 2);  -- Peça de Cerâmica
-
-
--- ============================================================
--- 7. PEDIDOS DE TESTE
--- ============================================================
---
--- Pedido 1:
---   AGUARDANDO_PAGAMENTO
---   R$ 48,00
---   Pode ser usado para testar o endpoint de pagamento.
---
--- Pedido 2:
---   EM_PREPARO
---   R$ 24,00
---   Pode ser usado para testar PATCH -> PRONTO.
---
--- Pedido 3:
---   PRONTO
---   R$ 32,00
---   Pode ser usado para testar PATCH -> ENTREGUE.
---
--- Pedido 4:
---   ENTREGUE
---   R$ 24,00
---   Pode ser usado para testar tentativas de alteração
---   de pedidos que já chegaram ao estado final.
+    (7, 1, 2),  
+    (7, 2, 2),  
+    (8, 3, 2),  
+    (15, 4, 2), 
+    (5, 6, 2);  
 
 INSERT INTO tb_pedidos
     (
@@ -281,21 +200,6 @@ VALUES
         CURRENT_TIMESTAMP - INTERVAL '1 hour'
     );
 
-
--- ============================================================
--- 8. ITENS DOS PEDIDOS
--- ============================================================
--- Nome confirmado pela estrutura atual do banco:
--- itens_pedido
---
--- Colunas:
---   id
---   preco_unitario
---   quantidade
---   subtotal
---   pedido_id
---   produto_id
-
 INSERT INTO itens_pedido
     (
         preco_unitario,
@@ -309,16 +213,6 @@ VALUES
     (24.00, 1, 24.00, 2, 1),
     (32.00, 1, 32.00, 3, 2),
     (24.00, 1, 24.00, 4, 1);
-
-
--- ============================================================
--- 9. GARANTIR SEQUÊNCIAS CORRETAS
--- ============================================================
--- Como os registros foram inseridos sem informar IDs,
--- o PostgreSQL já controla as sequências automaticamente.
---
--- Estes SELECTs deixam as sequências sincronizadas mesmo
--- se o script for adaptado posteriormente para IDs explícitos.
 
 SELECT setval(
     pg_get_serial_sequence('tb_usuarios', 'id'),
@@ -356,11 +250,6 @@ SELECT setval(
     true
 );
 
-
--- ============================================================
--- 10. CONFIRMAÇÃO
--- ============================================================
-
 SELECT 'Usuários cadastrados: ' || COUNT(*) AS resultado
 FROM tb_usuarios;
 
@@ -378,6 +267,5 @@ FROM tb_pedidos;
 
 SELECT 'Itens de pedidos cadastrados: ' || COUNT(*) AS resultado
 FROM itens_pedido;
-
 
 COMMIT;

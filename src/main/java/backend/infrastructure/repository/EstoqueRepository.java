@@ -10,8 +10,8 @@ import java.util.Optional;
 @Repository
 public interface EstoqueRepository extends JpaRepository<Estoque, Long> {
 
-    Optional<Estoque> findByProdutoIdAndUnidadeId(
-            Long produtoId,
-            Long unidadeId
-    );
+  Optional<Estoque> findByProdutoIdAndUnidadeId(
+    Long produtoId,
+    Long unidadeId
+  );
 }

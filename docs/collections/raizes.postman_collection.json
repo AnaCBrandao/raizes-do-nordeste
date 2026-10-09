@@ -1,7 +1,7 @@
 {
   "info": {
     "_postman_id": "7c2b4d2e-7e6d-4b5d-9e7f-raizes-nordeste",
-    "name": "Raízes do Nordeste - Testes Obrigatórios",
+    "name": "Raízes do Nordeste - Testes ",
     "description": "Coleção de testes automatizados para os requisitos de autenticação/autorização, validação, fluxo de pedidos, pagamento mock e atualização de status. Antes de executar, suba a API e o PostgreSQL e, para uma execução limpa, execute o data.sql manualmente no banco.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },

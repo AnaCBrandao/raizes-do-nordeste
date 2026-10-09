@@ -24,85 +24,77 @@ import java.util.List;
 @Tag(name = "Pedidos", description = "Endpoints para gerenciamento de pedidos")
 public class PedidoController {
 
-    @Autowired
-    private PedidoService pedidoService;
+  @Autowired
+  private PedidoService pedidoService;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+  @Autowired
+  private UsuarioRepository usuarioRepository;
 
+  @GetMapping
+  public List<Pedido> listarTodos() {
+    return pedidoService.listarTodos();
+  }
 
-    @GetMapping
-    public List<Pedido> listarTodos() {
-        return pedidoService.listarTodos();
-    }
+  @GetMapping("/{id}")
+  public ResponseEntity<Pedido> buscarPorId(@PathVariable Long id) {
+    return pedidoService.buscarPorId(id)
+    .map(ResponseEntity::ok)
+    .orElse(ResponseEntity.notFound().build());
+  }
 
+  @GetMapping("/usuario/{usuarioId}")
+  public List<Pedido> buscarPorUsuario(
+    @PathVariable Long usuarioId) {
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Pedido> buscarPorId(@PathVariable Long id) {
+    return pedidoService.buscarPorUsuario(usuarioId);
+  }
 
-        return pedidoService.buscarPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+  @GetMapping("/status/{status}")
+  public List<Pedido> buscarPorStatus(
+    @PathVariable StatusPedido status) {
 
+    return pedidoService.buscarPorStatus(status);
+  }
 
-    @GetMapping("/usuario/{usuarioId}")
-    public List<Pedido> buscarPorUsuario(
-            @PathVariable Long usuarioId) {
+  @PostMapping
+  public ResponseEntity<Pedido> criar(
+    @RequestBody PedidoRequestDTO request,
+    Authentication authentication) {
 
-        return pedidoService.buscarPorUsuario(usuarioId);
-    }
+    String email = authentication.getName();
 
+    Usuario usuario = usuarioRepository.findByEmail(email)
+      .orElseThrow(() ->
+        new RuntimeException(
+          "Usuário autenticado não encontrado"
+        )
+      );
 
-    @GetMapping("/status/{status}")
-    public List<Pedido> buscarPorStatus(
-            @PathVariable StatusPedido status) {
+      Pedido novoPedido = pedidoService.criar(
+        request,
+        usuario
+      );
 
-        return pedidoService.buscarPorStatus(status);
-    }
-
-
-    @PostMapping
-    public ResponseEntity<Pedido> criar(
-            @RequestBody PedidoRequestDTO request,
-            Authentication authentication) {
-
-        String email = authentication.getName();
-
-        Usuario usuario = usuarioRepository.findByEmail(email)
-                .orElseThrow(() ->
-                        new RuntimeException(
-                                "Usuário autenticado não encontrado"
-                        )
-                );
-
-        Pedido novoPedido = pedidoService.criar(
-                request,
-                usuario
-        );
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(novoPedido);
-    }
+      return ResponseEntity
+        .status(HttpStatus.CREATED)
+        .body(novoPedido);
+  }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(
-            @PathVariable Long id) {
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deletar(
+    @PathVariable Long id) {
+      pedidoService.deletar(id);
+      return ResponseEntity.noContent().build();
+  }
 
-        pedidoService.deletar(id);
-
-        return ResponseEntity.noContent().build();
-    }
-
-    @PatchMapping("/{pedidoId}/status")
+  @PatchMapping("/{pedidoId}/status")
     public ResponseEntity<AtualizarStatusPedidoResponseDTO> atualizarStatus(
-            @PathVariable Long pedidoId,
-            @RequestBody AtualizarStatusPedidoRequestDTO request) {
+      @PathVariable Long pedidoId,
+      @RequestBody AtualizarStatusPedidoRequestDTO request) {
 
-        AtualizarStatusPedidoResponseDTO response =
-                pedidoService.atualizarStatus(pedidoId, request);
+      AtualizarStatusPedidoResponseDTO response =
+        pedidoService.atualizarStatus(pedidoId, request);
 
         return ResponseEntity.ok(response);
     }

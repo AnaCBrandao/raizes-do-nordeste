@@ -19,91 +19,90 @@ import java.util.Map;
 @RestControllerAdvice(basePackages = "backend")
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErroRespostaDTO> tratarRegraNegocio(
-            IllegalArgumentException ex,
-            HttpServletRequest request) {
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<ErroRespostaDTO> tratarRegraNegocio(
+    IllegalArgumentException ex,
+    HttpServletRequest request) {
 
-        ErroRespostaDTO erro = new ErroRespostaDTO(
-                HttpStatus.BAD_REQUEST.value(),
-                "Requisição Inválida",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+    ErroRespostaDTO erro = new ErroRespostaDTO(
+      HttpStatus.BAD_REQUEST.value(),
+      "Requisição Inválida",
+      ex.getMessage(),
+      request.getRequestURI()
+    );
 
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(erro);
-    }
+    return ResponseEntity
+      .status(HttpStatus.BAD_REQUEST)
+      .body(erro);
+  }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> tratarValidacoes(
-            MethodArgumentNotValidException ex) {
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public ResponseEntity<Map<String, String>> tratarValidacoes(
+     MethodArgumentNotValidException ex) {
 
-        Map<String, String> erros = new HashMap<>();
+    Map<String, String> erros = new HashMap<>();
 
-        ex.getBindingResult()
-                .getFieldErrors()
-                .forEach(error ->
-                        erros.put(
-                                error.getField(),
-                                error.getDefaultMessage()
-                        )
-                );
+    ex.getBindingResult()
+      .getFieldErrors()
+      .forEach(error ->
+        erros.put(
+          error.getField(),
+          error.getDefaultMessage()
+        )
+      );
 
-        return ResponseEntity
-                .status(HttpStatus.BAD_REQUEST)
-                .body(erros);
-    }
+    return ResponseEntity
+      .status(HttpStatus.BAD_REQUEST)
+      .body(erros);
+  }
 
-    @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<ErroRespostaDTO> tratarRecursoNaoEncontrado(
-            HttpServletRequest request) {
+  @ExceptionHandler(NoResourceFoundException.class)
+  public ResponseEntity<ErroRespostaDTO> tratarRecursoNaoEncontrado(
+    HttpServletRequest request) {
 
-        ErroRespostaDTO erro = new ErroRespostaDTO(
-                HttpStatus.NOT_FOUND.value(),
-                "Não Encontrado",
-                "Recurso não encontrado.",
-                request.getRequestURI()
-        );
+    ErroRespostaDTO erro = new ErroRespostaDTO(
+      HttpStatus.NOT_FOUND.value(),
+      "Não Encontrado",
+      "Recurso não encontrado.",
+      request.getRequestURI()
+    );
 
-        return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
-                .body(erro);
-    }
+    return ResponseEntity
+      .status(HttpStatus.NOT_FOUND)
+      .body(erro);
+  }
 
-    // IMPORTANTE: adicionar este handler
-    @ExceptionHandler(ResponseStatusException.class)
-    public ResponseEntity<ErroRespostaDTO> tratarResponseStatus(
-            ResponseStatusException ex,
-            HttpServletRequest request) {
+  @ExceptionHandler(ResponseStatusException.class)
+  public ResponseEntity<ErroRespostaDTO> tratarResponseStatus(
+    ResponseStatusException ex,
+    HttpServletRequest request) {
 
-        ErroRespostaDTO erro = new ErroRespostaDTO(
-                ex.getStatusCode().value(),
-                ex.getStatusCode().toString(),
-                ex.getReason(),
-                request.getRequestURI()
-        );
+    ErroRespostaDTO erro = new ErroRespostaDTO(
+      ex.getStatusCode().value(),
+      ex.getStatusCode().toString(),
+      ex.getReason(),
+      request.getRequestURI()
+    );
 
-        return ResponseEntity
-                .status(ex.getStatusCode())
-                .body(erro);
-    }
+    return ResponseEntity
+      .status(ex.getStatusCode())
+      .body(erro);
+  }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErroRespostaDTO> tratarGeral(
-            Exception ex,
-            HttpServletRequest request) {
+  @ExceptionHandler(Exception.class)
+  public ResponseEntity<ErroRespostaDTO> tratarGeral(
+    Exception ex,
+    HttpServletRequest request) {
 
-        ErroRespostaDTO erro = new ErroRespostaDTO(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Erro Interno do Servidor",
-                ex.getMessage(),
-                request.getRequestURI()
-        );
+    ErroRespostaDTO erro = new ErroRespostaDTO(
+      HttpStatus.INTERNAL_SERVER_ERROR.value(),
+      "Erro Interno do Servidor",
+      ex.getMessage(),
+      request.getRequestURI()
+    );
 
-        return ResponseEntity
-                .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(erro);
-    }
+    return ResponseEntity
+      .status(HttpStatus.INTERNAL_SERVER_ERROR)
+      .body(erro);
+  }
 }

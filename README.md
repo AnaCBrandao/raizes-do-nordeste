@@ -257,6 +257,17 @@ services:
 
 ---
 
+## 🧪 Executando a coleção de testes no Postman
+
+1. Inicie o PostgreSQL com `docker compose up -d` e execute a aplicação Spring Boot.
+2. Execute o arquivo `data.sql` no banco de dados para preparar os usuários, produtos, unidades e pedidos de teste.
+3. Importe o arquivo `Raizes-do-Nordeste-Tests.postman_collection.json` no Postman, utilizando a opção **Import**.
+4. Execute as requisições na ordem apresentada na coleção, começando pelos logins de `CLIENTE` e `COZINHA`. Os tokens JWT e os IDs dos pedidos serão armazenados automaticamente nas variáveis da coleção.
+5. Confira a aba **Test Results** de cada requisição para verificar se os resultados correspondem aos esperados, incluindo autenticação, validações, criação de pedidos, estoque, pagamentos e atualização de status.
+
+**Observação:** execute os testes individualmente e na ordem indicada na primeira execução, pois algumas requisições dependem dos dados gerados pelas anteriores. O arquivo `data.sql` limpa e recria os dados de teste; utilize-o somente em ambiente de desenvolvimento.
+
+ ---
 
 # 📄 Licença
 

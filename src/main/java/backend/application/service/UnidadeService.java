@@ -20,43 +20,43 @@ public class UnidadeService {
   private final UnidadeRepository unidadeRepository;
 
   public UnidadeService(
-      ProdutoRepository produtoRepository,
-      UnidadeRepository unidadeRepository) {
+    ProdutoRepository produtoRepository,
+    UnidadeRepository unidadeRepository) {
 
-      this.produtoRepository = produtoRepository;
-      this.unidadeRepository = unidadeRepository;
+    this.produtoRepository = produtoRepository;
+    this.unidadeRepository = unidadeRepository;
   }
 
-    public List<ProdutoUnidadeResponseDTO> buscarProdutosPorUnidade(
-        Long unidadeId,
-        String categoriaStr) {
+  public List<ProdutoUnidadeResponseDTO> buscarProdutosPorUnidade(
+    Long unidadeId,
+    String categoriaStr) {
 
-    if (!unidadeRepository.existsById(unidadeId)) {
-      throw new ResponseStatusException(
-              HttpStatus.NOT_FOUND,
-              "Unidade não encontrada"
-      );
-    }
+      if (!unidadeRepository.existsById(unidadeId)) {
+        throw new ResponseStatusException(
+          HttpStatus.NOT_FOUND,
+          "Unidade não encontrada"
+        );
+      }
 
-    CategoriaProduto categoria = null;
+      CategoriaProduto categoria = null;
 
-    if (categoriaStr != null && !categoriaStr.isBlank()) {
+      if (categoriaStr != null && !categoriaStr.isBlank()) {
         categoria = CategoriaProduto.valueOf(categoriaStr.toUpperCase());
+      }
+
+      List<Produto> produtos =
+        produtoRepository.findProdutosAtivosPorUnidadeECategoria(
+        unidadeId, categoria);
+
+      return produtos.stream()
+        .map(p -> new ProdutoUnidadeResponseDTO(
+          p.getId(),
+          p.getNome(),
+          p.getDescricao(),
+          p.getPreco(),
+          p.getCategoria().name(),
+          p.getEstoque()
+        ))
+        .collect(Collectors.toList());
     }
-
-    List<Produto> produtos =
-            produtoRepository.findProdutosAtivosPorUnidadeECategoria(
-                    unidadeId, categoria);
-
-    return produtos.stream()
-            .map(p -> new ProdutoUnidadeResponseDTO(
-                    p.getId(),
-                    p.getNome(),
-                    p.getDescricao(),
-                    p.getPreco(),
-                    p.getCategoria().name(),
-                    p.getEstoque()
-            ))
-            .collect(Collectors.toList());
-}
 }

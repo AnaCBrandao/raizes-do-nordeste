@@ -19,30 +19,30 @@ import java.util.List;
 @Tag(name = "Usuários", description = "Endpoints para gerenciamento de usuários")
 public class UsuarioController {
 
-    @Autowired
-    private UsuarioService usuarioService;
+  @Autowired
+  private UsuarioService usuarioService;
 
-    @GetMapping
-    public List<UsuarioResponseDTO> listarTodos() {
-        return usuarioService.listarTodos();
-    }
+  @GetMapping
+  public List<UsuarioResponseDTO> listarTodos() {
+    return usuarioService.listarTodos();
+  }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UsuarioResponseDTO> buscarPorId(@PathVariable Long id) {
-        return usuarioService.buscarPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+  @GetMapping("/{id}")
+  public ResponseEntity<UsuarioResponseDTO> buscarPorId(@PathVariable Long id) {
+    return usuarioService.buscarPorId(id)
+      .map(ResponseEntity::ok)
+      .orElse(ResponseEntity.notFound().build());
+  }
 
-    @PostMapping
-    public ResponseEntity<UsuarioResponseDTO> criar(@Valid @RequestBody UsuarioRequestDTO dto) {
-        UsuarioResponseDTO novoUsuario = usuarioService.salvar(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
-    }
+  @PostMapping
+  public ResponseEntity<UsuarioResponseDTO> criar(@Valid @RequestBody UsuarioRequestDTO dto) {
+    UsuarioResponseDTO novoUsuario = usuarioService.salvar(dto);
+    return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
+  }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        usuarioService.deletar(id);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    usuarioService.deletar(id);
+    return ResponseEntity.noContent().build();
+  }
 }

@@ -15,156 +15,156 @@ import backend.domain.enums.StatusPedido;
 @Table(name = "tb_pedidos")
 public class Pedido {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "usuario_id", nullable = false)
+  private Usuario usuario;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "unidade_id", nullable = false)
-    private Unidade unidade;
+  @ManyToOne(optional = false)
+  @JoinColumn(name = "unidade_id", nullable = false)
+  private Unidade unidade;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "canal_pedido", nullable = false)
-    private CanalPedido canalPedido;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "canal_pedido", nullable = false)
+  private CanalPedido canalPedido;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "forma_pagamento", nullable = false)
-    private FormaPagamento formaPagamento;
+  @Enumerated(EnumType.STRING)
+  @Column(name = "forma_pagamento", nullable = false)
+  private FormaPagamento formaPagamento;
 
-    @Column(name = "data_pedido", nullable = false, updatable = false)
-    private LocalDateTime dataPedido;
+  @Column(name = "data_pedido", nullable = false, updatable = false)
+  private LocalDateTime dataPedido;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private StatusPedido status;
+  @Enumerated(EnumType.STRING)
+  @Column(nullable = false)
+  private StatusPedido status;
 
-    @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
-    private BigDecimal valorTotal;
+  @Column(name = "valor_total", nullable = false, precision = 10, scale = 2)
+  private BigDecimal valorTotal;
 
-    @OneToMany(
-        mappedBy = "pedido",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true
-    )
-    private List<ItemPedido> itens = new ArrayList<>();
+  @OneToMany(
+    mappedBy = "pedido",
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
+  )
+  private List<ItemPedido> itens = new ArrayList<>();
 
-    @PrePersist
-    protected void onCreate() {
-        this.dataPedido = LocalDateTime.now();
+  @PrePersist
+  protected void onCreate() {
+    this.dataPedido = LocalDateTime.now();
 
-        if (this.status == null) {
-            this.status = StatusPedido.AGUARDANDO_PAGAMENTO;
-        }
-
-        if (this.valorTotal == null) {
-            this.valorTotal = BigDecimal.ZERO;
-        }
+    if (this.status == null) {
+      this.status = StatusPedido.AGUARDANDO_PAGAMENTO;
     }
 
-    public Pedido() {
+    if (this.valorTotal == null) {
+      this.valorTotal = BigDecimal.ZERO;
     }
+  }
 
-    public Pedido(
-            Long id,
-            Usuario usuario,
-            Unidade unidade,
-            CanalPedido canalPedido,
-            FormaPagamento formaPagamento,
-            StatusPedido status,
-            BigDecimal valorTotal
-    ) {
-        this.id = id;
-        this.usuario = usuario;
-        this.unidade = unidade;
-        this.canalPedido = canalPedido;
-        this.formaPagamento = formaPagamento;
-        this.status = status;
-        this.valorTotal = valorTotal;
-    }
+  public Pedido() {
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public Pedido(
+    Long id,
+    Usuario usuario,
+    Unidade unidade,
+    CanalPedido canalPedido,
+    FormaPagamento formaPagamento,
+    StatusPedido status,
+     BigDecimal valorTotal
+  ) {
+    this.id = id;
+    this.usuario = usuario;
+    this.unidade = unidade;
+    this.canalPedido = canalPedido;
+    this.formaPagamento = formaPagamento;
+    this.status = status;
+    this.valorTotal = valorTotal;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
+  public Usuario getUsuario() {
+    return usuario;
+  }
 
-    public Unidade getUnidade() {
-        return unidade;
-    }
+  public void setUsuario(Usuario usuario) {
+    this.usuario = usuario;
+  }
 
-    public void setUnidade(Unidade unidade) {
-        this.unidade = unidade;
-    }
+  public Unidade getUnidade() {
+    return unidade;
+  }
 
-    public CanalPedido getCanalPedido() {
-        return canalPedido;
-    }
+  public void setUnidade(Unidade unidade) {
+    this.unidade = unidade;
+  }
 
-    public void setCanalPedido(CanalPedido canalPedido) {
-        this.canalPedido = canalPedido;
-    }
+  public CanalPedido getCanalPedido() {
+    return canalPedido;
+  }
 
-    public FormaPagamento getFormaPagamento() {
-        return formaPagamento;
-    }
+  public void setCanalPedido(CanalPedido canalPedido) {
+    this.canalPedido = canalPedido;
+  }
 
-    public void setFormaPagamento(FormaPagamento formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
+  public FormaPagamento getFormaPagamento() {
+    return formaPagamento;
+  }
 
-    public LocalDateTime getDataPedido() {
-        return dataPedido;
-    }
+  public void setFormaPagamento(FormaPagamento formaPagamento) {
+    this.formaPagamento = formaPagamento;
+  }
 
-    public void setDataPedido(LocalDateTime dataPedido) {
-        this.dataPedido = dataPedido;
-    }
+  public LocalDateTime getDataPedido() {
+    return dataPedido;
+  }
 
-    public StatusPedido getStatus() {
-        return status;
-    }
+  public void setDataPedido(LocalDateTime dataPedido) {
+    this.dataPedido = dataPedido;
+  }
 
-    public void setStatus(StatusPedido status) {
-        this.status = status;
-    }
+  public StatusPedido getStatus() {
+    return status;
+  }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
-    }
+  public void setStatus(StatusPedido status) {
+    this.status = status;
+  }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
-    }
+  public BigDecimal getValorTotal() {
+    return valorTotal;
+  }
 
-    public List<ItemPedido> getItens() {
-        return itens;
-    }
+  public void setValorTotal(BigDecimal valorTotal) {
+    this.valorTotal = valorTotal;
+  }
 
-    public void setItens(List<ItemPedido> itens) {
-        this.itens = itens;
-    }
+  public List<ItemPedido> getItens() {
+    return itens;
+  }
 
-    public void adicionarItem(ItemPedido item) {
-        itens.add(item);
-        item.setPedido(this);
-    }
+  public void setItens(List<ItemPedido> itens) {
+    this.itens = itens;
+  }
 
-    public void removerItem(ItemPedido item) {
-        itens.remove(item);
-        item.setPedido(null);
-    }
+  public void adicionarItem(ItemPedido item) {
+    itens.add(item);
+    item.setPedido(this);
+  }
+
+  public void removerItem(ItemPedido item) {
+    itens.remove(item);
+    item.setPedido(null);
+  }
 }

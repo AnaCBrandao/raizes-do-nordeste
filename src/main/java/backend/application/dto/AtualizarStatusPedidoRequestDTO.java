@@ -2,16 +2,16 @@ package backend.application.dto;
 
 public class AtualizarStatusPedidoRequestDTO {
 
-    private String novoStatus;
+  private String novoStatus;
 
-    public AtualizarStatusPedidoRequestDTO() {
-    }
+  public AtualizarStatusPedidoRequestDTO() {
+  }
 
-    public String getNovoStatus() {
-        return novoStatus;
-    }
+  public String getNovoStatus() {
+    return novoStatus;
+  }
 
-    public void setNovoStatus(String novoStatus) {
-        this.novoStatus = novoStatus;
-    }
+  public void setNovoStatus(String novoStatus) {
+    this.novoStatus = novoStatus;
+  }
 }

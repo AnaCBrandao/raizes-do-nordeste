@@ -4,30 +4,30 @@ import java.math.BigDecimal;
 
 public class PagamentoRequestDTO {
 
-    private String formaPagamento;
-    private BigDecimal valor;
+  private String formaPagamento;
+  private BigDecimal valor;
 
-    public PagamentoRequestDTO() {
-    }
+  public PagamentoRequestDTO() {
+  }
 
-    public PagamentoRequestDTO(String formaPagamento, BigDecimal valor) {
-        this.formaPagamento = formaPagamento;
-        this.valor = valor;
-    }
+  public PagamentoRequestDTO(String formaPagamento, BigDecimal valor) {
+    this.formaPagamento = formaPagamento;
+    this.valor = valor;
+  }
 
-    public String getFormaPagamento() {
-        return formaPagamento;
-    }
+  public String getFormaPagamento() {
+    return formaPagamento;
+  }
 
-    public void setFormaPagamento(String formaPagamento) {
-        this.formaPagamento = formaPagamento;
-    }
+  public void setFormaPagamento(String formaPagamento) {
+    this.formaPagamento = formaPagamento;
+  }
 
-    public BigDecimal getValor() {
-        return valor;
-    }
+  public BigDecimal getValor() {
+    return valor;
+  }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
+  public void setValor(BigDecimal valor) {
+    this.valor = valor;
+  }
 }

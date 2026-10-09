@@ -13,14 +13,14 @@ import java.util.List;
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
-    List<Produto> findByCategoria(CategoriaProduto categoria);
+  List<Produto> findByCategoria(CategoriaProduto categoria);
 
-    List<Produto> findByNomeContainingIgnoreCase(String nome);
+  List<Produto> findByNomeContainingIgnoreCase(String nome);
 
-    @Query("SELECT e.produto FROM Estoque e " +
-           "WHERE e.unidade.id = :unidadeId " +
-           "AND (:categoria IS NULL OR e.produto.categoria = :categoria)")
-    List<Produto> findProdutosAtivosPorUnidadeECategoria(
-            @Param("unidadeId") Long unidadeId, 
-            @Param("categoria") CategoriaProduto categoria);
+  @Query("SELECT e.produto FROM Estoque e " +
+    "WHERE e.unidade.id = :unidadeId " +
+    "AND (:categoria IS NULL OR e.produto.categoria = :categoria)")
+  List<Produto> findProdutosAtivosPorUnidadeECategoria(
+    @Param("unidadeId") Long unidadeId, 
+    @Param("categoria") CategoriaProduto categoria);
 }

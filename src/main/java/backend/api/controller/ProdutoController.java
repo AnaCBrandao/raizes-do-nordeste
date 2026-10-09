@@ -17,40 +17,40 @@ import java.util.List;
 @Tag(name = "Produtos", description = "Endpoints para gerenciamento do catálogo de produtos")
 public class ProdutoController {
 
-    @Autowired
-    private ProdutoService produtoService;
+  @Autowired
+  private ProdutoService produtoService;
 
-    @GetMapping
-    public List<Produto> listarTodos() {
-        return produtoService.listarTodos();
-    }
+  @GetMapping
+  public List<Produto> listarTodos() {
+    return produtoService.listarTodos();
+  }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
-        return produtoService.buscarPorId(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
+  @GetMapping("/{id}")
+  public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
+    return produtoService.buscarPorId(id)
+      .map(ResponseEntity::ok)
+      .orElse(ResponseEntity.notFound().build());
+  }
 
-    @GetMapping("/categoria/{categoria}")
-    public List<Produto> buscarPorCategoria(@PathVariable CategoriaProduto categoria) {
-        return produtoService.buscarPorCategoria(categoria);
-    }
+  @GetMapping("/categoria/{categoria}")
+  public List<Produto> buscarPorCategoria(@PathVariable CategoriaProduto categoria) {
+    return produtoService.buscarPorCategoria(categoria);
+  }
 
-    @GetMapping("/buscar")
-    public List<Produto> buscarPorNome(@RequestParam String nome) {
-        return produtoService.buscarPorNome(nome);
-    }
+  @GetMapping("/buscar")
+  public List<Produto> buscarPorNome(@RequestParam String nome) {
+    return produtoService.buscarPorNome(nome);
+  }
 
-    @PostMapping
-    public ResponseEntity<Produto> criar(@RequestBody Produto produto) {
-        Produto novoProduto = produtoService.salvar(produto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
-    }
+  @PostMapping
+  public ResponseEntity<Produto> criar(@RequestBody Produto produto) {
+    Produto novoProduto = produtoService.salvar(produto);
+    return ResponseEntity.status(HttpStatus.CREATED).body(novoProduto);
+  }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
-        produtoService.deletar(id);
-        return ResponseEntity.noContent().build();
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    produtoService.deletar(id);
+    return ResponseEntity.noContent().build();
+  }
 }

@@ -8,62 +8,61 @@ import java.util.List;
 @Table(name = "unidades")
 public class Unidade {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private String nome;
+  private String nome;
 
-    private String endereco;
+  private String endereco;
 
-    private Boolean ativa;
+  private Boolean ativa;
 
-    public Unidade() {}
+  public Unidade() {}
 
-    public Unidade(Long id, String nome, String endereco, Boolean ativa) {
-        this.id = id;
-        this.nome = nome;
-        this.endereco = endereco;
-        this.ativa = ativa;
-    }
+  public Unidade(Long id, String nome, String endereco, Boolean ativa) {
+    this.id = id;
+    this.nome = nome;
+    this.endereco = endereco;
+    this.ativa = ativa;
+  }
 
+  @OneToMany(mappedBy = "unidade", cascade = CascadeType.ALL)
+  private List<Estoque> estoques = new ArrayList<>();
 
-    @OneToMany(mappedBy = "unidade", cascade = CascadeType.ALL)
-    private List<Estoque> estoques = new ArrayList<>();
+  public List<Estoque> consultaEstoque() {
+    return this.estoques;
+  }
 
-    public List<Estoque> consultaEstoque() {
-        return this.estoques;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public String getEndereco() {
+    return endereco;
+  }
 
-    public String getEndereco() {
-        return endereco;
-    }
+  public void setEndereco(String endereco) {
+    this.endereco = endereco;
+  }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+  public Boolean getAtiva() {
+    return ativa;
+  }
 
-    public Boolean getAtiva() {
-        return ativa;
-    }
-
-    public void setAtiva(Boolean ativa) {
-        this.ativa = ativa;
-    }
+  public void setAtiva(Boolean ativa) {
+    this.ativa = ativa;
+  }
 }

@@ -16,20 +16,6 @@ serão apagados:
 - `tb_usuarios`
 
 As tabelas e suas estruturas NÃO são apagadas.
-
-O comando utilizado é:
-
-```sql
-TRUNCATE TABLE
-    itens_pedido,
-    estoques,
-    tb_pedidos,
-    tb_produtos,
-    unidades,
-    tb_usuarios
-RESTART IDENTITY CASCADE;
-```
-
 Portanto, use esse arquivo em um banco de desenvolvimento/testes.
 
 ---
@@ -127,62 +113,6 @@ Isso representa o Baião de Dois disponível na Unidade Centro.
 | 3 | `PRONTO` | R$ 32,00 | Beira-Mar |
 | 4 | `ENTREGUE` | R$ 24,00 | Beira-Mar |
 
-### Teste de pagamento
-
-O pedido 1 pode ser usado para:
-
-```text
-POST /api/v3/pedidos/1/pagamentos
-```
-
-com:
-
-```json
-{
-  "formaPagamento": "PIX",
-  "valor": 48
-}
-```
-
-Com a regra de mock implementada no projeto, o pagamento deverá ser
-aprovado e o pedido passará para:
-
-```text
-EM_PREPARO
-```
-
----
-
-### Teste de atualização de status
-
-O pedido 2 já começa como:
-
-```text
-EM_PREPARO
-```
-
-Então pode ser usado para:
-
-```text
-PATCH /api/v3/pedidos/2/status
-```
-
-com:
-
-```json
-{
-  "novoStatus": "PRONTO"
-}
-```
-
-O pedido 3 pode ser usado para testar:
-
-```json
-{
-  "novoStatus": "ENTREGUE"
-}
-```
-
 ---
 
 ## Como executar pelo pgAdmin
@@ -207,16 +137,6 @@ Itens de pedidos cadastrados: 4
 
 ---
 
-## Como incluir no projeto
-
-Coloque:
-
-```text
-src/
-└── main/
-    └── resources/
-        └── data.sql
-```
 
 Se quiser que o Spring Boot execute o arquivo automaticamente,
 adicione ao `application.properties`:
@@ -233,9 +153,6 @@ o Spring inicializar a aplicação.
 
 Isso significa que os dados cadastrados manualmente no banco serão
 apagados e substituídos pelos dados de teste a cada inicialização.
-
-Para desenvolvimento isso pode ser útil, mas para uma aplicação
-em produção NÃO use essa configuração com este `data.sql`.
 
 ---
 
